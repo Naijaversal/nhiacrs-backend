@@ -5,8 +5,9 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const userRoute = require("./routes/userRoute");
 const productRoute = require("./routes/productRoute");
+const taskRoute = require("./routes/taskRoute");
 const contactRoute = require("./routes/contactRoute");
-const activityRoute = require("./routes/activityRoute");
+const requestRoute = require("./routes/requestRoutes");
 const errorHandler = require("./middleWare/errorMiddleware");
 const cookieParser = require("cookie-parser");
 const path = require("path");
@@ -31,7 +32,8 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
 app.use("/api/contactus", contactRoute);
-app.use("/api/activity", activityRoute);
+app.use("/api/tasks", taskRoute);
+app.use("/api/requests", requestRoute);
 
 // Routes
 app.get("/", (req, res) => {
@@ -46,7 +48,7 @@ mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     app.listen(PORT, () => {
-      console.log(`Server Running on port ${PORT}`);
+      console.log(`Digital Office Server Running on port ${PORT}`);
     });
   })
   .catch((err) => console.log(err));

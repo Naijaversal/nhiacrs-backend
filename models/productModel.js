@@ -1,4 +1,7 @@
 const mongoose = require("mongoose");
+const mongooseTimezone = require("mongoose-timezone");
+
+mongoose.plugin(mongooseTimezone, { defaultTimezone: "GMT+1" });
 
 const productSchema = mongoose.Schema(
   {

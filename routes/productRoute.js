@@ -8,12 +8,12 @@ const {
   deleteProduct,
   updateProduct,
 } = require("../controllers/productController");
-const { upload } = require("../utils/fileUpload");
+const isAdmin = require("../middleWare/isAdmin");
 
-router.post("/", protect, upload.single("image"), createProduct);
-router.patch("/:id", protect, upload.single("image"), updateProduct);
+router.post("/", protect, createProduct);
+router.patch("/:id", protect, updateProduct);
 router.get("/", protect, getProducts);
 router.get("/:id", protect, getProduct);
-router.delete("/:id", protect, deleteProduct);
+router.delete("/:id", protect, isAdmin,deleteProduct);
 
 module.exports = router;

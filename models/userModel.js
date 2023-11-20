@@ -38,6 +38,7 @@ const userSchema = mongoose.Schema(
       type: String,
       maxLength: [100, "role must not be more than 100 characters"],
       default: "role",
+      trim: true,
       
     },
   },
