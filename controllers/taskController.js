@@ -45,10 +45,10 @@ const getTask = asyncHandler(async (req, res) => {
     throw new Error("Task not found");
   }
 
-  if (task.user.toString() !== req.user.id) {
-    res.status(401);
-    throw new Error("User not authorized");
-  }
+  // if (task.user.toString() !== req.user.id) {
+  //   res.status(401);
+  //   throw new Error("User not authorized");
+  // }
 
   res.status(200).json(task);
 });
